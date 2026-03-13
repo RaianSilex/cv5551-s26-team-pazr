@@ -1,0 +1,64 @@
+[0.011s] Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/raianlaptop/cv5551-s26-team-dcml/src/lite6_cube_stacker -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker
+[0.155s] -- The C compiler identification is GNU 11.4.0
+[0.280s] -- The CXX compiler identification is GNU 11.4.0
+[0.288s] -- Detecting C compiler ABI info
+[0.380s] -- Detecting C compiler ABI info - done
+[0.385s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.423s] -- Detecting C compile features
+[0.424s] -- Detecting C compile features - done
+[0.431s] -- Detecting CXX compiler ABI info
+[0.536s] -- Detecting CXX compiler ABI info - done
+[0.542s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.542s] -- Detecting CXX compile features
+[0.542s] -- Detecting CXX compile features - done
+[0.548s] -- Found ament_cmake: 1.3.13 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.825s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.980s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.014s] -- Found rclpy: 3.3.20 (/opt/ros/humble/share/rclpy/cmake)
+[1.075s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.148s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.149s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.149s] -- Added test 'lint_cmake' to check CMake code style
+[1.150s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.151s] -- Added test 'xmllint' to check XML markup files
+[1.153s] -- Configuring done
+[1.155s] -- Generating done
+[1.156s] -- Build files have been written to: /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker
+[1.159s] Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/raianlaptop/cv5551-s26-team-dcml/src/lite6_cube_stacker -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker
+[1.161s] Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+[1.217s] Built target ament_cmake_python_symlink_lite6_cube_stacker
+[1.376s] running egg_info
+[1.385s] creating lite6_cube_stacker.egg-info
+[1.385s] writing lite6_cube_stacker.egg-info/PKG-INFO
+[1.385s] writing dependency_links to lite6_cube_stacker.egg-info/dependency_links.txt
+[1.385s] writing top-level names to lite6_cube_stacker.egg-info/top_level.txt
+[1.385s] writing manifest file 'lite6_cube_stacker.egg-info/SOURCES.txt'
+[1.413s] reading manifest file 'lite6_cube_stacker.egg-info/SOURCES.txt'
+[1.413s] writing manifest file 'lite6_cube_stacker.egg-info/SOURCES.txt'
+[1.436s] Built target ament_cmake_python_build_lite6_cube_stacker_egg
+[1.444s] Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+[1.458s] Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker
+[1.467s] -- Install configuration: ""
+[1.467s] -- Execute custom install script
+[1.468s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/pythonpath.sh
+[1.474s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/pythonpath.dsv
+[1.483s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/PKG-INFO
+[1.490s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/SOURCES.txt
+[1.501s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/dependency_links.txt
+[1.512s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/top_level.txt
+[1.523s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/__init__.py
+[1.534s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/aruco_detector.py
+[1.547s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/camera_robot_calibration.py
+[1.558s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/cube_stacker.py
+[1.572s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/aruco_detector.py
+[1.581s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/cube_stacker.py
+[1.593s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/camera_robot_calibration.py
+[1.605s] [31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:105 (message):
+[1.605s]   ament_cmake_symlink_install_directory() can't find
+[1.606s]   '/home/raianlaptop/cv5551-s26-team-dcml/src/lite6_cube_stacker/lite6_cube_stacker/launch/'
+[1.606s] Call Stack (most recent call first):
+[1.606s]   ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:334 (ament_cmake_symlink_install_directory)
+[1.606s]   cmake_install.cmake:46 (include)
+[1.606s] 
+[1.606s] [0m
+[1.608s] Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker

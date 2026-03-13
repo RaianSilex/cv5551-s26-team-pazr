@@ -1,0 +1,8 @@
+source;share/lite6_cube_stacker/hook/cmake_prefix_path.ps1
+source;share/lite6_cube_stacker/hook/cmake_prefix_path.dsv
+source;share/lite6_cube_stacker/hook/cmake_prefix_path.sh
+source;share/lite6_cube_stacker/local_setup.bash
+source;share/lite6_cube_stacker/local_setup.dsv
+source;share/lite6_cube_stacker/local_setup.ps1
+source;share/lite6_cube_stacker/local_setup.sh
+source;share/lite6_cube_stacker/local_setup.zsh

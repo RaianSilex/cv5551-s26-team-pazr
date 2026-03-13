@@ -1,0 +1,63 @@
+[0.009s] Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+[0.029s] -- Found ament_cmake: 1.3.13 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.145s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.149s] -- Found rclpy: 3.3.20 (/opt/ros/humble/share/rclpy/cmake)
+[0.194s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.249s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.250s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.250s] -- Added test 'lint_cmake' to check CMake code style
+[0.251s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.251s] -- Added test 'xmllint' to check XML markup files
+[0.252s] -- Configuring done
+[0.254s] -- Generating done
+[0.255s] -- Build files have been written to: /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker
+[0.289s] Built target ament_cmake_python_symlink_lite6_cube_stacker
+[0.439s] running egg_info
+[0.448s] writing lite6_cube_stacker.egg-info/PKG-INFO
+[0.449s] writing dependency_links to lite6_cube_stacker.egg-info/dependency_links.txt
+[0.449s] writing top-level names to lite6_cube_stacker.egg-info/top_level.txt
+[0.477s] reading manifest file 'lite6_cube_stacker.egg-info/SOURCES.txt'
+[0.477s] writing manifest file 'lite6_cube_stacker.egg-info/SOURCES.txt'
+[0.501s] Built target ament_cmake_python_build_lite6_cube_stacker_egg
+[0.509s] Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+[0.516s] Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker
+[0.521s] -- Install configuration: ""
+[0.521s] -- Execute custom install script
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/pythonpath.sh
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/pythonpath.dsv
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/PKG-INFO
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/SOURCES.txt
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/dependency_links.txt
+[0.522s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker-1.0.0-py3.10.egg-info/top_level.txt
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/__init__.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/aruco_detector.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/camera_robot_calibration.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/cube_stacker.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/aruco_detector.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/cube_stacker.py
+[0.523s] -- Up-to-date symlink: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/camera_robot_calibration.py
+[0.523s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/launch/cube_stacker.launch.py
+[0.533s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/ament_index/resource_index/package_run_dependencies/lite6_cube_stacker
+[0.543s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/ament_index/resource_index/parent_prefix_path/lite6_cube_stacker
+[0.555s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/ament_prefix_path.sh
+[0.568s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/ament_prefix_path.dsv
+[0.580s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/path.sh
+[0.590s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/environment/path.dsv
+[0.601s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/local_setup.bash
+[0.611s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/local_setup.sh
+[0.621s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/local_setup.zsh
+[0.631s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/local_setup.dsv
+[0.642s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/package.dsv
+[0.653s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/ament_index/resource_index/packages/lite6_cube_stacker
+[0.664s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/cmake/lite6_cube_stackerConfig.cmake
+[0.675s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/cmake/lite6_cube_stackerConfig-version.cmake
+[0.685s] -- Symlinking: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/share/lite6_cube_stacker/package.xml
+[0.727s] Listing '/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker'...
+[0.727s] Compiling '/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/__init__.py'...
+[0.727s] Compiling '/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/aruco_detector.py'...
+[0.727s] Compiling '/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/camera_robot_calibration.py'...
+[0.727s] Compiling '/home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/local/lib/python3.10/dist-packages/lite6_cube_stacker/cube_stacker.py'...
+[0.730s] -- Installing: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/aruco_detector
+[0.730s] -- Installing: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/cube_stacker
+[0.730s] -- Installing: /home/raianlaptop/cv5551-s26-team-dcml/install/lite6_cube_stacker/lib/lite6_cube_stacker/camera_robot_calibration
+[0.732s] Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker

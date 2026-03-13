@@ -1,0 +1,4 @@
+Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker -- -j16 -l16
+Invoking command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker
+Invoked command in '/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker

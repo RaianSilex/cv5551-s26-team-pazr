@@ -1,0 +1,8 @@
+[31mCMake Error at ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:105 (message):
+  ament_cmake_symlink_install_directory() can't find
+  '/home/raianlaptop/cv5551-s26-team-dcml/src/lite6_cube_stacker/lite6_cube_stacker/launch/'
+Call Stack (most recent call first):
+  ament_cmake_symlink_install/ament_cmake_symlink_install.cmake:334 (ament_cmake_symlink_install_directory)
+  cmake_install.cmake:46 (include)
+
+[0m
