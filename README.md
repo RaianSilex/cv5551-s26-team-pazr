@@ -24,24 +24,6 @@ Autonomous cube stacking system using the **UFACTORY Lite6** robotic arm, a **ZE
 
 ---
 
-## Table of Contents
-
-- [System Overview](#system-overview)
-- [Prerequisites](#prerequisites)
-- [Step 1 — Install NVIDIA Driver and CUDA](#step-1--install-nvidia-driver-and-cuda)
-- [Step 2 — Install ZED SDK](#step-2--install-zed-sdk)
-- [Step 3 — Install ROS2 Dependencies](#step-3--install-ros2-dependencies)
-- [Step 4 — Clone the Repo and Set Up Workspace](#step-4--clone-the-repo-and-set-up-workspace)
-- [Step 5 — Clone Third-Party ROS2 Packages](#step-5--clone-third-party-ros2-packages)
-- [Step 6 — Install All ROS Dependencies](#step-6--install-all-ros-dependencies)
-- [Step 7 — Build the Workspace](#step-7--build-the-workspace)
-- [Step 8 — Hardware Setup](#step-8--hardware-setup)
-- [Step 9 — Camera Calibration](#step-9--camera-calibration)
-- [Step 10 — Run the System](#step-10--run-the-system)
-- [Troubleshooting](#troubleshooting)
-- [Package Structure](#package-structure)
-
----
 
 ## System Overview
 
@@ -73,19 +55,6 @@ ZED2 Camera
 
 ---
 
-## Prerequisites
-
-| Requirement | Version |
-|-------------|---------|
-| Ubuntu | 22.04 LTS |
-| ROS2 | Humble Hawksbill |
-| NVIDIA GPU | Any CUDA-capable GPU |
-| NVIDIA Driver | 535+ |
-| CUDA | 12.x |
-| ZED SDK | 4.x |
-| Python | 3.10 (ships with Ubuntu 22.04) |
-
----
 
 ## Step 1 — Install NVIDIA Driver and CUDA
 
@@ -400,10 +369,10 @@ Open `src/lite6_cube_stacker/launch/cube_stacker.launch.py` and update:
 ```python
 parameters=[{
     'mode': 'static',
-    'tx': 0.55,     # ← YOUR measurement
-    'ty': -0.35,    # ← YOUR measurement
-    'tz': 0.62,     # ← YOUR measurement
-    'rx': 0.5236,   # ← YOUR tilt angle
+    'tx': 0.55,     # ← From measurement
+    'ty': -0.35,    # ← From measurement
+    'tz': 0.62,     # ← From measurement
+    'rx': 0.5236,   # ← From tilt angle
     'ry': 0.0,
     'rz': 3.1416,
 }]
@@ -454,24 +423,6 @@ ros2 run tf2_tools view_frames && evince frames.pdf
 # 4. Watch MoveIt2 status
 ros2 topic echo /move_group/status
 ```
-
-
----
-
-## Troubleshooting
-
-| Error | Cause | Fix |
-|-------|-------|-----|
-| `libnvidia-encode.so.1 not found` | No NVIDIA driver | Redo Step 1 |
-| `ZEDConfig.cmake not found` | ZED SDK not installed | Redo Step 2 |
-| `package xarm_msgs not found` | xarm_ros2 not built yet | Build xarm first (Step 7) |
-| `zed_interfaces` rosdep error | Normal — ZED SDK installs this outside apt | The `-r` flag in rosdep skips it safely |
-| ArUco not detected | Wrong lighting or `marker_size` param | Check lighting; verify `marker_size: 0.04` matches your printed size |
-| Arm misses cubes | Bad camera calibration | Re-measure `tx/ty/tz` (Step 9) |
-| MoveIt planning fails | Cube in singularity zone | Move `STACK_BASE_X` further from robot base |
-| Gripper drops cube | Close position too loose | Lower `GRIPPER_CLOSE_POS` in `cube_stacker.py` |
-| ZED green/purple frames | USB 2.0 port | Plug into USB **3.0** (blue) port |
-| `colcon build` aborted | Dependency not found | Build packages in order shown in Step 7 |
 
 ---
 
