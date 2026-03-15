@@ -7,7 +7,7 @@
     Cube stacking system for the UFACTORY Lite6 arm using ZED camera
     and ArUco markers, orchestrated with MoveIt2 and ROS2 Humble.
   </description>
-  <maintainer email="you@example.com">Your Name</maintainer>
+  <maintainer email="chowd207@umn.edu">RaianSilex</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
