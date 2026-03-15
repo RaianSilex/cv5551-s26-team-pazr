@@ -1,7 +1,7 @@
 """
 cube_stacker.launch.py
 -----------------------
-Launches everything needed for Project 1:
+Launches everything needed for RRC:
   1. ZED camera driver
   2. xArm / Lite6 hardware driver (real robot)   ← set USE_SIM to use Gazebo
   3. MoveIt2 move_group + RViz
@@ -16,8 +16,7 @@ Environment variables:
 
 import os
 from launch import LaunchDescription
-from launch.actions import (IncludeLaunchDescription, DeclareLaunchArgument,
-                             GroupAction, TimerAction)
+from launch.actions import (IncludeLaunchDescription, DeclareLaunchArgument, GroupAction, TimerAction)
 from launch.conditions import IfCondition, UnlessCondition
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
