@@ -1,1 +1,0 @@
-rclpy;std_msgs;geometry_msgs;sensor_msgs;tf2_ros;tf2_geometry_msgs;cv_bridge;image_transport;moveit_ros_planning_interface;moveit_py;xarm_msgs;xarm_api;zed_interfaces;ament_lint_auto;ament_lint_common

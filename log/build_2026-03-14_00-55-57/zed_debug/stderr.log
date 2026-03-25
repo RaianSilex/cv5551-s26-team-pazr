@@ -1,6 +1,0 @@
-/usr/bin/ld: warning: libnvidia-encode.so.1, needed by /usr/local/zed/lib/libsl_zed.so, not found (try using -rpath or -rpath-link)
-/usr/bin/ld: /usr/local/zed/lib/libsl_zed.so: undefined reference to `NvEncodeAPICreateInstance'
-collect2: error: ld returned 1 exit status
-gmake[2]: *** [CMakeFiles/zed_debug_proc.dir/build.make:424: zed_debug_proc] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:164: CMakeFiles/zed_debug_proc.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

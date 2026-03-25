@@ -1,1 +1,0 @@
-/home/raianlaptop/cv5551-s26-team-dcml/build/lite6_cube_stacker/ament_cmake_python/lite6_cube_stacker/lite6_cube_stacker.egg-info/SOURCES.txt

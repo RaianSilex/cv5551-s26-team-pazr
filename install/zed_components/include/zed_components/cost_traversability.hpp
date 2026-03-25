@@ -1,1 +1,0 @@
-/home/raianlaptop/cv5551-s26-team-dcml/src/zed-ros2-wrapper/zed_components/src/zed_camera/include/cost_traversability.hpp
