@@ -17,7 +17,7 @@ TASK_PLAN_PROMPT = f"""You are a robotic task planner for a beverage-making robo
 
 You will be shown an image of a tabletop with several containers. Each container has a
 white label indicating its contents (e.g., "coffee", "sugar", "milk"). There is also a
-main cup containing water and a stirring stick.
+stirring stick and main cup containing water.
 
 Your job is to output a task plan to make coffee. The plan should be a JSON array of
 action objects. Each action has a "action" field and optionally an "ingredient" field.
