@@ -18,9 +18,10 @@ HF_MODEL = 'prithivMLmods/Hand-Gesture-19'
 GESTURE_TO_BEVERAGE = {
     'one':   'coffee',
     'peace': 'orange juice',
+    'three': 'chocolate', 
 }
 GESTURE_TO_CONDITION = {
-    'three': 'lactose intolerant',   # 3 fingers = skip milk
+    'four': 'lactose intolerant',   # 4 fingers = skip milk
 }
 CONFIRM_GESTURE = 'ok'
 CANCEL_GESTURE  = 'fist'

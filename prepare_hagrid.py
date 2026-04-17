@@ -6,8 +6,8 @@ TARGET_GESTURES = ['one', 'peace', 'four', 'three', 'ok', 'fist']
 GESTURE_ROLE = {
     'one':   'coffee',
     'peace': 'orange_juice',
-    'four':  'chocolate',
-    'three': 'lactose_free_toggle',
+    'three':  'chocolate',
+    'four': 'lactose_free_toggle',
     'ok':    'confirm',
     'fist':  'cancel',
 }

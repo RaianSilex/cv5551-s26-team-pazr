@@ -91,11 +91,12 @@ class BeverageGUI:
         # ── Gesture hint panel ────────────────────────
         self.gesture_frame = ttk.LabelFrame(root, text='Gesture guide', padding=10)
         hints = [
-            '☕  1 finger  →  Coffee',
-            '🍊  Peace (2 fingers)  →  Orange Juice',
-            '🥛  3 fingers  →  Toggle lactose-free',
-            '✅  OK  →  Confirm order',
-            '✊  Fist  →  Cancel / restart',
+            '1 finger: Coffee',
+            '2 fingers (Peace): Orange Juice',
+            '3 fingers: Chocolate',
+            '4 fingers: Toggle lactose-free',
+            'OK: Confirm order',
+            'Fist;  Cancel / restart',
         ]
         for hint in hints:
             ttk.Label(self.gesture_frame, text=hint, font=('TkDefaultFont', 11)).pack(anchor='w', pady=1)
