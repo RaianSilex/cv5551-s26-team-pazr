@@ -2,11 +2,14 @@
 Gesture → Robot Action mapping:
     one   → Order: Coffee
     peace → Order: Orange juice
-    three → Toggle: lactose-free (skips milk)
+    three → Order: Chocolate
+    four  → Toggle: lactose-free (skips milk)
+    five  → Toggle: diabetic (skips sugar)
     ok    → Confirm current selection
     fist  → Cancel / clear selection
 """
 
+import threading
 import cv2, time, torch
 from PIL import Image
 from transformers import AutoImageProcessor, SiglipForImageClassification
@@ -18,10 +21,11 @@ HF_MODEL = 'prithivMLmods/Hand-Gesture-19'
 GESTURE_TO_BEVERAGE = {
     'one':   'coffee',
     'peace': 'orange juice',
-    'three': 'chocolate', 
+    'three': 'chocolate',
 }
 GESTURE_TO_CONDITION = {
     'four': 'lactose intolerant',   # 4 fingers = skip milk
+    'five': 'diabetic',             # 5 fingers = skip sugar
 }
 CONFIRM_GESTURE = 'ok'
 CANCEL_GESTURE  = 'fist'
@@ -93,8 +97,36 @@ class GestureRecognizer:
         return label, conf, annotated
 
 
-def get_order_from_gesture(zed, timeout=60.0, log=print):
+class WebcamSource:
+    """Minimal cv2.VideoCapture wrapper that matches the `image`/`close` API
+    used by ZedCamera, so get_order_from_gesture can consume either source."""
+    def __init__(self, cam_id=0):
+        self.cap = cv2.VideoCapture(cam_id)
+        if not self.cap.isOpened():
+            raise RuntimeError(f'Could not open webcam {cam_id}.')
 
+    @property
+    def image(self):
+        ret, frame = self.cap.read()
+        if not ret:
+            raise RuntimeError('Webcam read failed.')
+        return frame
+
+    def close(self):
+        self.cap.release()
+
+
+def get_order_from_gesture(cam, timeout=60.0, log=print,
+                           on_frame=None, stop_event=None):
+    """
+    Parameters
+    ----------
+    cam : object with `.image` returning a BGR numpy frame (ZedCamera or WebcamSource).
+    on_frame : optional callable(annotated_bgr_frame). If provided, the caller
+        is responsible for displaying frames (e.g. an embedded Tk panel) and
+        no OpenCV window is created.
+    stop_event : optional threading.Event that, when set, breaks the loop early.
+    """
     recognizer = GestureRecognizer()
 
     selected_beverage = None
@@ -106,68 +138,80 @@ def get_order_from_gesture(zed, timeout=60.0, log=print):
     log('─── Gesture ordering active ───')
     log('one finger: Coffee')
     log('peace (2): Orange Juice')
-    log('three fingers: Toggle lactose-free (removes milk)')
+    log('three fingers: Chocolate')
+    log('four fingers: Toggle lactose-free (skip milk)')
+    log('five (open palm): Toggle diabetic (skip sugar)')
     log('ok: Confirm')
     log('fist: Cancel / restart')
 
-    cv2.namedWindow('Gesture Order', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('Gesture Order', 960, 540)
+    use_cv_window = on_frame is None
+    if use_cv_window:
+        cv2.namedWindow('Gesture Order', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('Gesture Order', 960, 540)
 
-    while time.time() < deadline:
-        frame    = zed.image
-        gesture, conf, annotated = recognizer.predict(frame)
+    try:
+        while time.time() < deadline:
+            if stop_event is not None and stop_event.is_set():
+                break
 
-        debounce_buffer.append(gesture)
-        if len(debounce_buffer) > DEBOUNCE_FRAMES:
-            debounce_buffer.pop(0)
+            frame    = cam.image
+            gesture, conf, annotated = recognizer.predict(frame)
 
-        stable = None
-        if (len(debounce_buffer) == DEBOUNCE_FRAMES
-                and len(set(debounce_buffer)) == 1
-                and debounce_buffer[0] is not None):
-            stable = debounce_buffer[0]
+            debounce_buffer.append(gesture)
+            if len(debounce_buffer) > DEBOUNCE_FRAMES:
+                debounce_buffer.pop(0)
 
-        if stable != last_acted:
-            last_acted = stable
+            stable = None
+            if (len(debounce_buffer) == DEBOUNCE_FRAMES
+                    and len(set(debounce_buffer)) == 1
+                    and debounce_buffer[0] is not None):
+                stable = debounce_buffer[0]
 
-            if stable == CANCEL_GESTURE:
-                log('Cancel — selection cleared.')
-                selected_beverage = None
-                active_conditions.clear()
-                debounce_buffer.clear()
+            if stable != last_acted:
+                last_acted = stable
 
-            elif stable in GESTURE_TO_BEVERAGE:
-                selected_beverage = GESTURE_TO_BEVERAGE[stable]
-                log(f'Selected: {selected_beverage}')
+                if stable == CANCEL_GESTURE:
+                    log('Cancel — selection cleared.')
+                    selected_beverage = None
+                    active_conditions.clear()
+                    debounce_buffer.clear()
 
-            elif stable in GESTURE_TO_CONDITION:
-                cond = GESTURE_TO_CONDITION[stable]
-                if cond in active_conditions:
-                    active_conditions.discard(cond)
-                    log(f'Removed condition: {cond}')
-                else:
-                    active_conditions.add(cond)
-                    log(f'Added condition: {cond}')
+                elif stable in GESTURE_TO_BEVERAGE:
+                    selected_beverage = GESTURE_TO_BEVERAGE[stable]
+                    log(f'Selected: {selected_beverage}')
 
-            elif stable == CONFIRM_GESTURE:
-                if selected_beverage:
-                    log(f'Confirmed: {selected_beverage} | '
-                        f'conditions: {list(active_conditions) or "none"}')
-                    cv2.destroyAllWindows()
-                    return selected_beverage, list(active_conditions)
-                else:
-                    log('OK detected — select a beverage first (show 1 or 2 fingers).')
+                elif stable in GESTURE_TO_CONDITION:
+                    cond = GESTURE_TO_CONDITION[stable]
+                    if cond in active_conditions:
+                        active_conditions.discard(cond)
+                        log(f'Removed condition: {cond}')
+                    else:
+                        active_conditions.add(cond)
+                        log(f'Added condition: {cond}')
 
-        _draw_hud(annotated, selected_beverage, active_conditions,
-                  stable, time.time(), deadline)
-        cv2.imshow('Gesture Order', annotated)
+                elif stable == CONFIRM_GESTURE:
+                    if selected_beverage:
+                        log(f'Confirmed: {selected_beverage} | '
+                            f'conditions: {list(active_conditions) or "none"}')
+                        return selected_beverage, list(active_conditions)
+                    else:
+                        log('OK detected — select a beverage first (show 1, 2 or 3 fingers).')
 
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+            _draw_hud(annotated, selected_beverage, active_conditions,
+                      stable, time.time(), deadline)
 
-    cv2.destroyAllWindows()
-    log('Gesture ordering ended (timeout or quit).')
-    return None, None
+            if use_cv_window:
+                cv2.imshow('Gesture Order', annotated)
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+            else:
+                on_frame(annotated)
+
+        log('Gesture ordering ended (timeout or quit).')
+        return None, None
+    finally:
+        if use_cv_window:
+            cv2.destroyAllWindows()
 
 
 def _draw_hud(frame, beverage, conditions, stable, now, deadline):
@@ -199,22 +243,8 @@ def _draw_hud(frame, beverage, conditions, stable, now, deadline):
 
 
 if __name__ == '__main__':
-    class _WebcamDummy:
-        def __init__(self, cam_id=0):
-            self.cap = cv2.VideoCapture(cam_id)
-            if not self.cap.isOpened():
-                raise RuntimeError('Could not open webcam.')
-        @property
-        def image(self):
-            ret, frame = self.cap.read()
-            if not ret:
-                raise RuntimeError('Webcam read failed.')
-            return frame
-        def close(self):
-            self.cap.release()
-
     print('Standalone test (webcam). Press Q to quit.\n')
-    cam = _WebcamDummy()
+    cam = WebcamSource()
     try:
         beverage, conditions = get_order_from_gesture(cam, timeout=90.0)
         if beverage:
