@@ -14,7 +14,7 @@ from checkpoint0 import get_transform_camera_robot
 from checkpoint1 import grasp_cube, CUBE_TAG_FAMILY, CUBE_TAG_SIZE
 from config import (
     INGREDIENT_TAG_MAP, STIRRER_TAG_ID, MAIN_CUP_POSITION,
-    PRE_GRASP_HEIGHT, POUR_HEIGHT, STIR_DEPTH, STIR_CYCLES, POUR_TILT_ANGLE,
+    PRE_GRASP_HEIGHT, POUR_HEIGHT, STIR_DEPTH, STIR_CYCLES, POUR_TILT_ANGLE,STIR_CUP_POSITION, STIR_HEIGHT
 )
 
 
@@ -26,6 +26,13 @@ def _get_cup_xyz_mm():
         MAIN_CUP_POSITION['z'],
     )
 
+def _get_stir_cup_xyz_mm():
+    """Return main cup position in mm (already in mm from config)."""
+    return (
+        STIR_CUP_POSITION['x'],
+        STIR_CUP_POSITION['y'],
+        STIR_CUP_POSITION['z'],
+    )
 
 # ──────────────────────────────────────────────
 # AprilTag Detection
@@ -69,7 +76,7 @@ class ContainerDetector:
         poses_robot = {}
         poses_cam = {}
         for tag in tags:
-            if tag.tag_id < 5:
+            if tag.tag_id < 6:
                 continue
             t_cam_obj = numpy.eye(4)
             t_cam_obj[:3, :3] = tag.pose_R
@@ -119,13 +126,23 @@ def pour(arm):
     """Tilt the held container to pour its contents into the main cup, then return upright."""
     x, y, z = _get_cup_xyz_mm()
     pour_z = z + POUR_HEIGHT
+    angles = [-61.3, 23, 67.5, 13, 42, -98.5]
+
+    #arm.set_position(x, y, z, 180, 0, 0, wait=True)
+    arm.set_servo_angle(angle=angles, wait=True)
+    time.sleep(0.2)
 
     # Tilt to pour
-    arm.set_position(x, y, pour_z, 180, POUR_TILT_ANGLE, 0, wait=True)
+    #arm.set_position(191, -291, 290, roll=-12.4, pitch=67.7, yaw=-12.3, wait=True)
+    # arm.set_position(259, -311.5, 260.7, roll=-110, pitch=-78.0, yaw=-147.0, wait=True)
+    angles[4] = -33.5
+    arm.set_servo_angle(angle=angles, wait=True)
+
+
     time.sleep(2.0)
 
     # Return to upright
-    arm.set_position(x, y, pour_z, 180, 0, 0, wait=True)
+    arm.set_position(x, y, pour_z, 180, -5, -46.8, wait=True)
     time.sleep(0.5)
 
     # Lift back up
@@ -134,13 +151,13 @@ def pour(arm):
 
 def stir(arm):
     """With stirrer held, perform a circular stirring motion inside the main cup."""
-    x, y, z = _get_cup_xyz_mm()
+    x, y, z = _get_stir_cup_xyz_mm()
 
-    top_z = z + POUR_HEIGHT
+    top_z = z + STIR_HEIGHT
     bottom_z = z + STIR_DEPTH
 
     # Move above cup
-    arm.set_position(x, y, top_z, 180, 0, 0, wait=True)
+    arm.set_position(x, y, top_z+50, 180, 0, 0, wait=True)
 
     # Descend into cup
     arm.set_position(x, y, bottom_z, 180, 0, 0, wait=True)

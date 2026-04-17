@@ -10,7 +10,7 @@ from checkpoint0 import get_transform_camera_robot
 GRIPPER_LENGTH = 0.067 * 1000
 CUBE_TAG_FAMILY = 'tag36h11'
 CUBE_TAG_ID = 4
-CUBE_TAG_SIZE = 0.017
+CUBE_TAG_SIZE = 0.0207
 
 robot_ip = '192.168.1.182'
 
@@ -30,6 +30,7 @@ def grasp_cube(arm, cube_pose):
     x = cube_pose[0, 3] * 1000
     y = cube_pose[1, 3] * 1000
     z = cube_pose[2, 3] * 1000
+    print(f"Grasping cube at (mm): x={x:.1f}, y={y:.1f}, z={z:.1f}")
 
     # Extract yaw from cube rotation: project cube x-axis onto robot XY plane
     x_axis = cube_pose[:3, 0]
@@ -39,7 +40,7 @@ def grasp_cube(arm, cube_pose):
     grasp_roll, grasp_pitch, grasp_yaw = 180, 0, yaw
 
     PRE_GRASP_OFFSET = 120 
-    GRASP_DEPTH = 2
+    GRASP_DEPTH = 6
 
     # Open gripper before approaching
     arm.open_lite6_gripper()
@@ -54,8 +55,8 @@ def grasp_cube(arm, cube_pose):
 
     # Close gripper to grasp cube
     arm.close_lite6_gripper()
-    time.sleep(1.5)
-    arm.stop_lite6_gripper()
+    time.sleep(0.8)
+    #arm.stop_lite6_gripper()
 
     # Lift cube back to safe height
     arm.set_position(x, y, z + PRE_GRASP_OFFSET, grasp_roll, grasp_pitch, grasp_yaw, wait=True)
@@ -84,7 +85,7 @@ def place_cube(arm, cube_pose):
     place_roll, place_pitch, place_yaw = 180, 0, yaw
 
     PRE_PLACE_OFFSET = 120
-    PLACE_DEPTH = 2
+    PLACE_DEPTH = 6
 
     # Move to pre-place position above target
     arm.set_position(x, y, z + PRE_PLACE_OFFSET, place_roll, place_pitch, place_yaw, wait=True)
@@ -155,7 +156,7 @@ def get_transform_cube(observation, camera_intrinsic, camera_pose):
             t_cam_cube[:3, 3] = tag.pose_t.flatten()
 
             t_robot_cube = numpy.linalg.inv(camera_pose) @ t_cam_cube
-
+            
             return t_robot_cube, t_cam_cube
 
     return None

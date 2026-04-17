@@ -114,7 +114,7 @@ def get_task_plan(image, user_requirement=''):
     _, buffer = cv2.imencode('.jpg', image)
     b64_image = base64.b64encode(buffer).decode('utf-8')
 
-    client = OpenAI(api_key='YOUR_KEY_HERE')  # replace with the key, remove after
+    client = OpenAI(api_key='')  # replace with the key, remove after
 
     prompt = build_prompt(user_requirement)
 
